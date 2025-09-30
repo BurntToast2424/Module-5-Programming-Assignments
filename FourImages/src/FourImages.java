@@ -2,20 +2,16 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class FourImages extends Application {
     public void start(Stage primaryStage) {
-        // Create panes
-        Pane bigPane = new HBox(10);
-        bigPane.setPadding(new Insets(5, 5, 5, 5));
-        Pane pane1 = new VBox(10);
-        Pane pane2 = new VBox(10);
-        pane1.setPadding(new Insets(5, 5, 5, 5));
-        pane2.setPadding(new Insets(5, 5, 5, 5));
+        // Create pane
+        GridPane pane = new GridPane();
+        pane.setPadding(new Insets(15, 12.5, 15, 12.5));
+        pane.setHgap(5);
+        pane.setVgap(5);
 
         // Create images
         ImageView image1 = new ImageView("images/flag1.gif");
@@ -33,16 +29,14 @@ public class FourImages extends Application {
         image4.setFitHeight(150);
         image4.setFitWidth(250);
 
-        // Add children to panes
-        pane1.getChildren().add(image1);
-        pane1.getChildren().add(image2);
-        pane2.getChildren().add(image3);
-        pane2.getChildren().add(image4);
-        bigPane.getChildren().add(pane1);
-        bigPane.getChildren().add(pane2);
+        // Add children to pane
+        pane.add(image1, 0 ,0);
+        pane.add(image2, 0, 1);
+        pane.add(image3, 1, 0);
+        pane.add(image4, 1, 1);
 
         // Set scene and stage
-        Scene scene = new Scene(bigPane);
+        Scene scene = new Scene(pane);
         primaryStage.setTitle("Four flags");
         primaryStage.setScene(scene);
         primaryStage.show();
